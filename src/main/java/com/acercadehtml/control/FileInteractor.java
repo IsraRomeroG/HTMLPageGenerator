@@ -9,7 +9,7 @@ public class FileInteractor {
             BufferedReader reader = new BufferedReader(new FileReader(path));
             String line;
             while((line = reader.readLine()) != null){
-                file.append(line);
+                file.append(line+"\n");
             }
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
@@ -19,14 +19,17 @@ public class FileInteractor {
         return file;
     }
 
-
-    public void WriteFile(String path){
+    public void WriteFile(String path, StringBuilder content){
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(path));
-            writer.write("Writing");
+            writer.write(content.toString());
             writer.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public boolean CreateFolder(){
+        return true;
     }
 }
