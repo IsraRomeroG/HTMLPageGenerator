@@ -3,6 +3,11 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
+### Project files ###
+template.html
+input/
+output/
+
 ### IntelliJ IDEA ###
 .idea/
 .idea/modules.xml
