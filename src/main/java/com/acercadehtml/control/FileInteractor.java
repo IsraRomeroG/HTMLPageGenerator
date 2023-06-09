@@ -3,7 +3,7 @@ package com.acercadehtml.control;
 import java.io.*;
 
 public class FileInteractor {
-    public StringBuilder ReadFile (String path){
+    public static StringBuilder ReadFile (String path){
         StringBuilder file = new StringBuilder();
         try {
             BufferedReader reader = new BufferedReader(new FileReader(path));
@@ -19,7 +19,7 @@ public class FileInteractor {
         return file;
     }
 
-    public void WriteFile(String path, StringBuilder content){
+    public static void WriteFile(String path, StringBuilder content){
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(path));
             writer.write(content.toString());
