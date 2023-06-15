@@ -59,7 +59,7 @@ public class Template {
     }
 
     public StringBuilder buildBreadcrumbsNode(String title, int position, boolean isTheLastNode){
-        StringBuilder node = new StringBuilder("<li itemprop=\"itemListElement\" itemscope itemtype=\"https://schema.org/ListItem\">");
+        StringBuilder node = new StringBuilder("<li itemprop=\"itemListElement\" itemscope itemtype=\"https://schema.org/ListItem\">\n");
         if(isTheLastNode){
             node.append(getTitleCode(title, null));
         }else{
@@ -67,27 +67,27 @@ public class Template {
             node.append(getArrowCode());
         }
         node.append(getPositionCode(position));
-        node.append("</li>");
+        node.append("</li>\n");
         return node;
     }
     public String formatLink(String title){
-        if(title.equalsIgnoreCase("inicio")){
-            return "";
+        if(title == null || title.isBlank() || title.equalsIgnoreCase("inicio")){
+            return "/";
         }
-        return title.toLowerCase().replace(' ', '-').concat(".html");
+        return "/"+title.toLowerCase().replace(' ', '-').concat(".html");
     }
     public String getTitleCode(String title, String link){
         if(link==null){
-            return "<span itemprop=\"name\">"+title+"</span>";
+            return "    <span itemprop=\"name\">"+title+"</span>\n";
         }else{
-            return "<a itemprop=\"item\" href=\"/"+link+"\"><span itemprop=\"name\">"+title+"</span></a>";
+            return "    <a itemprop=\"item\" href=\""+link+"\"><span itemprop=\"name\">"+title+"</span></a>\n";
         }
     }
     public String getArrowCode(){
-        return "<span><img src=\"/images/arrow.png\" alt=\">\"></span>";
+        return "    <span><img src=\"/images/arrow.png\" alt=\">\"></span>\n";
     }
     public String getPositionCode(int position){
-        return "<meta itemprop=\"position\" content=\""+position+"\">";
+        return "    <meta itemprop=\"position\" content=\""+position+"\">\n";
     }
 
     /**
